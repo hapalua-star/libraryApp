@@ -29,9 +29,14 @@ function addBookToLibrary() {
  };
 
 addBookToLibrary();
-console.log(myLibrary[0].information());
+console.log(myLibrary[0]);
+addBookToLibrary();
+console.log(myLibrary[1]);
 
+const newBook=document.querySelector(".newBook");
+newBook.addEventListener('click',addBookToLibrary);
 
   
+
   
   
