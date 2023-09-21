@@ -26,14 +26,24 @@ function addBookToLibrary() {
    
     const Booked=new Book(title1,author1,pages1,read1);
     myLibrary.push(Booked);
+
+    booksLibrary();
  };
 
-addBookToLibrary();
-console.log(myLibrary[0]);
-addBookToLibrary();
-console.log(myLibrary[1]);
 
-const newBook=document.querySelector(".newBook");
+
+ function booksLibrary(){
+
+    for (let i = 0; i <=5; i++) {
+        console.log(myLibrary[i]);
+      };
+      
+
+ };
+
+
+
+const newBook=document.querySelector('.newBook');
 newBook.addEventListener('click',addBookToLibrary);
 
   
