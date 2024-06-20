@@ -28,8 +28,31 @@ function addBookToLibrary() {
     const Booked=new Book(title1,author1,pages1,read1);
     myLibrary.push(Booked);
 
-    booksLibrary();
- };
+
+    
+    displayBookCard(Booked);
+
+};
+
+
+ function displayBookCard(book) {
+    const libraryDiv = document.getElementById('library');
+
+    const bookCard = document.createElement('div');
+    bookCard.classList.add('book-card');
+
+    const bookInfo = document.createElement('p');
+    bookInfo.textContent = book.information();
+    bookCard.appendChild(bookInfo);
+
+    libraryDiv.appendChild(bookCard);
+}
+
+
+
+
+
+
 
 
 
