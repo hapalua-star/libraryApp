@@ -10,7 +10,8 @@ function Book(title,author,pages,read) {                //the constructor functi
     this.pages=pages;
     this.read=read;
     this.information=function(){
-        return((this.title,this.author,this.pages,this.read));
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+
     };
 
 };
