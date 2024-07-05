@@ -47,6 +47,16 @@ function addBookToLibrary() {
     bookCard.appendChild(bookInfo);
 
     libraryDiv.appendChild(bookCard);
+
+
+
+    const bookDel= document.createElement('button');
+    bookDel.classList.add('delBook');
+    bookCard.appendChild(bookDel);
+
+
+
+
 }
 
 
