@@ -31,16 +31,17 @@ function addBookToLibrary() {
 
 
     
-    displayBookCard(Booked);
+    displayBookCard(Booked,myLibrary.length-1);
 
 };
 
 
- function displayBookCard(book) {
+ function displayBookCard(book,index) {
     const libraryDiv = document.getElementById('library');
 
     const bookCard = document.createElement('div');
     bookCard.classList.add('book-card');
+    bookCard.setAttribute('data-index',index)
 
     const bookInfo = document.createElement('p');
     bookInfo.textContent = book.information();
@@ -54,34 +55,33 @@ function addBookToLibrary() {
     bookDel.classList.add('delBook');
     bookCard.appendChild(bookDel);
 
+    
+    bookDel.addEventListener('click',function()
+    {deletion(index);
+    });
 
 
-
-}
-
-
-
-
-
-
-
-
-
- function booksLibrary(){
-
-    for (let i = 0; i <=myLibrary.length; i++) {
-        console.log(myLibrary[i]);
-      };
-      
-
- };
+ }
 
 
 
 const newBook=document.querySelector('.submit');
 newBook.addEventListener('click',addBookToLibrary);
 
-  
 
-  
-  
+ 
+ function deletion(index)
+ {
+    myLibrary.splice(index,1);
+    
+    refreshScreen();
+
+ }
+
+ function refreshScreen() {
+    const libraryDiv = document.getElementById('library');
+    libraryDiv.innerHTML = "";  // Properly clears the div
+    myLibrary.forEach(function(book, index) {
+        displayBookCard(book, index);  // Re-display each book with its index
+    });
+}
