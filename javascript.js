@@ -16,6 +16,12 @@ function Book(title,author,pages,read) {                //the constructor functi
 
 };
 
+Book.prototype.toggleRead = function() {
+    this.read = (this.read === 'Read') ? 'Not Read' : 'Read';
+    refreshScreen();
+};
+
+
 
 
 
@@ -55,12 +61,26 @@ function addBookToLibrary() {
     bookDel.classList.add('delBook');
     bookCard.appendChild(bookDel);
 
-    
+
+    const readButton=document.createElement("button");
+    readButton.classList.add("readButton1");
+    bookCard.appendChild(readButton);
+
+
+
     bookDel.addEventListener('click',function()
     {deletion(index);
     });
 
 
+    readButton.addEventListener("click",function()
+    {
+        book.toggleRead();
+        
+
+    })
+
+    
  }
 
 

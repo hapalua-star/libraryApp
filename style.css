@@ -65,7 +65,14 @@
 .delBook{
   width:50px;
   height:50px;
-  margin-top: 40px;
+  margin-top: 50px;
   background-color: #3895cb;
 }
  
+
+.readButton1{
+  width:50px;
+  height:50px;
+  margin-top: 50px;
+  background-color:chartreuse;
+}
