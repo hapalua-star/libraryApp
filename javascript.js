@@ -3,27 +3,32 @@ let myLibrary=[];
 
 
 
+class Book{
 
-function Book(title,author,pages,read) {                //the constructor function
+constructor (title,author,pages,read) {                //the constructor function
     this.title = title;
     this.author = author;
     this.pages=pages;
     this.read=read;
-    this.information=function(){
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+   
 
+};
+
+    information()
+    {
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+    };
+
+
+
+
+    toggleRead() 
+    {
+    this.read = (this.read === 'Read') ? 'Not Read' : 'Read';
+    refreshScreen();
     };
 
 };
-
-Book.prototype.toggleRead = function() {
-    this.read = (this.read === 'Read') ? 'Not Read' : 'Read';
-    refreshScreen();
-};
-
-
-
-
 
 function addBookToLibrary() {
     const title1=document.getElementById('title').value;
