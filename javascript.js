@@ -1,5 +1,5 @@
 
-let myLibrary=[];
+
 
 
 
@@ -25,12 +25,19 @@ constructor (title,author,pages,read) {                //the constructor functio
     toggleRead() 
     {
     this.read = (this.read === 'Read') ? 'Not Read' : 'Read';
-    refreshScreen();
+    library.refreshScreen();
     };
 
 };
 
-function addBookToLibrary() {
+class Library{
+
+    constructor(){
+      this.myLibrary=[];
+    };
+
+
+  addBookToLibrary() {
     const title1=document.getElementById('title').value;
     const author1=document.getElementById('author').value;
 
@@ -38,11 +45,30 @@ function addBookToLibrary() {
     const read1=document.getElementById('status').value;
    
     const Booked=new Book(title1,author1,pages1,read1);
-    myLibrary.push(Booked);
+    this.myLibrary.push(Booked);
 
 
     
-    displayBookCard(Booked,myLibrary.length-1);
+    displayBookCard(Booked,this.myLibrary.length-1);
+
+};
+
+
+ deletion(index)
+ {
+    this.myLibrary.splice(index,1);
+    
+    this.refreshScreen();
+
+ }
+
+  refreshScreen() {
+    const libraryDiv = document.getElementById('library');
+    libraryDiv.innerHTML = "";  // Properly clears the div
+    this.myLibrary.forEach(function(book, index) {
+        displayBookCard(book, index);  // Re-display each book with its index
+    });
+}
 
 };
 
@@ -74,7 +100,7 @@ function addBookToLibrary() {
 
 
     bookDel.addEventListener('click',function()
-    {deletion(index);
+    {library.deletion(index);
     });
 
 
@@ -89,24 +115,11 @@ function addBookToLibrary() {
  }
 
 
-
+const library= new Library();
 const newBook=document.querySelector('.submit');
-newBook.addEventListener('click',addBookToLibrary);
+newBook.addEventListener('click',function(){
+    library.addBookToLibrary()});
 
 
  
- function deletion(index)
- {
-    myLibrary.splice(index,1);
-    
-    refreshScreen();
-
- }
-
- function refreshScreen() {
-    const libraryDiv = document.getElementById('library');
-    libraryDiv.innerHTML = "";  // Properly clears the div
-    myLibrary.forEach(function(book, index) {
-        displayBookCard(book, index);  // Re-display each book with its index
-    });
-}
+ 
